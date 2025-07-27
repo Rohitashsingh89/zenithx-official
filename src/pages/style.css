@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.prose img {
+  border-radius: 0.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.prose a {
+  color: #4a6cf7;
+  text-decoration: underline;
+}
+
+.prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.wp-block-separator .has-alpha-channel-opacity {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.text-gradient {
+  -webkit-text-fill-color: transparent;
+  background-image: linear-gradient(120deg, #ff8d4d, #e449ae 49%, #7746ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.holographic-button {
+  position: relative;
+  overflow: hidden;
+  /* border-radius: 0.375rem; */
+  /* border: 1px solid transparent; */
+  transition: all 0.5s ease;
+}
+
+.holographic-button::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    0deg, 
+    transparent, 
+    transparent 30%, 
+    rgba(255, 141, 77, 0.5) /* thoda orange glow */
+  );
+  transform: rotate(-45deg);
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.holographic-button:hover {
+  /* transform: scale(1.05); */
+  box-shadow: 0 0 5px rgba(255, 141, 77, 0.7); /* orange glow shadow */
+  border-color: #ff8d4d; /* primary border color */
+  z-index: 10;
+}
+
+.holographic-button:hover::before {
+  opacity: 1;
+  transform: rotate(-45deg) translateY(100%);
+}
+
+@keyframes floatImage {
+  0% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-12px) scale(1.02);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.floating-image {
+  animation: floatImage 4s ease-in-out infinite;
+  transition: transform 0.3s ease-in-out;
+}
+
+.react-hot-toast {
+  z-index: 99999999 !important;
+  position: fixed !important;
+  top: 100px !important;
+}
+
+.keen-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+.keen-slider__slide {
+  min-width: 0; /* force shrinking */
+  max-width: 100%; /* no overflow */
+  flex: 1 0 auto;
+}
+
+@media (max-width: 450px) {
+  .keen-slider-container {
+    max-width: 450px; 
+  }
+}
