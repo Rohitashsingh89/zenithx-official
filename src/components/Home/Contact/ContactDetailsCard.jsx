@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
 import { BiSolidQuoteRight } from 'react-icons/bi';
 
 const ContactDetailsCard = () => {
@@ -53,25 +53,25 @@ const ContactDetailsCard = () => {
         {/* Social Media Icons */}
         <div className="flex justify-start gap-0 pt-6">
           <a
-            href="#"
+            href="https://www.facebook.com/zenithx.official"
             className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-black dark:text-white duration-300 hover:bg-opacity-100 hover:text-white"
           >
             <FaFacebook className="text-xl" />
           </a>
-          <a
+          {/* <a
             href="#"
             className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-black dark:text-white duration-300 hover:bg-opacity-100 hover:text-white sm:ml-3"
           >
             <FaTwitter className="text-xl" />
-          </a>
+          </a> */}
           <a
-            href="#"
+            href="https://www.linkedin.com/company/zenithx-official01"
             className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-black dark:text-white duration-300 hover:bg-opacity-100 hover:text-white sm:ml-3"
           >
             <FaLinkedin className="text-xl" />
           </a>
           <a
-            href="#"
+            href="https://www.facebook.com/zenithx.official"
             className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-md bg-primary bg-opacity-10 text-black dark:text-white duration-300 hover:bg-opacity-100 hover:text-white sm:ml-3"
           >
             <FaInstagram className="text-xl" />
