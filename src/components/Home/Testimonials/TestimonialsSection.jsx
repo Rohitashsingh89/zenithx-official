@@ -1,6 +1,6 @@
 import SectionTitle from 'components/common/SectionTitle';
 import SingleTestimonial from './SingleTestimonial';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { IoChevronBackOutline } from 'react-icons/io5';
 import { LuChevronRight } from 'react-icons/lu';
 import { useKeenSlider } from 'keen-slider/react';
@@ -17,7 +17,6 @@ export function extractTestimonialsFromHtml(htmlString) {
     if (!strong) return;
 
     const author = strong.textContent.trim();
-
     const rawHtml = temp.innerHTML;
 
     // Match Company:
@@ -50,6 +49,7 @@ export function extractTestimonialsFromHtml(htmlString) {
 
 export default function TestimonialsDynamicSection({ htmlContent = '', showTitle = true }) {
   const [testimonials, setTestimonials] = useState([]);
+  const sliderElRef = useRef(null);
 
   const [sliderRef, instanceRef] = useKeenSlider(
     {
@@ -75,6 +75,7 @@ export default function TestimonialsDynamicSection({ htmlContent = '', showTitle
     },
     [
       (slider) => {
+        if (!slider) return;
         const updateOnResize = () => slider.update();
         window.addEventListener('resize', updateOnResize);
         return () => window.removeEventListener('resize', updateOnResize);
@@ -89,10 +90,14 @@ export default function TestimonialsDynamicSection({ htmlContent = '', showTitle
     }
   }, [htmlContent]);
 
+  // Guard render until testimonials are ready
+  if (!testimonials.length) return null;
+
   return (
     <section className="relative z-10 bg-primary/[.03] py-16 md:py-20 lg:py-28 overflow-x-hidden">
       <div className="container keen-slider-container">
         <div className="text-center text-primary pb-5">Testimonials</div>
+
         {showTitle && (
           <SectionTitle
             title="What Our Users Say"
@@ -101,23 +106,39 @@ export default function TestimonialsDynamicSection({ htmlContent = '', showTitle
           />
         )}
 
-        {/* <div ref={sliderRef} className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3"> */}
-        <div ref={sliderRef} className="keen-slider max-w-full overflow-x-hidden">
+        <div
+          ref={(node) => {
+            sliderRef(node);
+            sliderElRef.current = node;
+          }}
+          className="keen-slider max-w-full overflow-x-hidden"
+        >
           {testimonials.map((testimonial, index) => (
             <div key={`${testimonial.name}-${index}`} className="keen-slider__slide min-w-0">
               <SingleTestimonial testimonial={testimonial} />
             </div>
           ))}
         </div>
+
         <div className="flex justify-end gap-4 mt-8">
           <button
-            onClick={(e) => e.stopPropagation() || instanceRef.current.prev()}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (instanceRef.current && typeof instanceRef.current.prev === 'function') {
+                instanceRef.current.prev();
+              }
+            }}
             className="text-primary bg-primary/[0.1] hover:bg-primary hover:text-white transition-colors duration-500 p-3 rounded-full"
           >
             <IoChevronBackOutline size={24} />
           </button>
           <button
-            onClick={(e) => e.stopPropagation() || instanceRef.current.next()}
+            onClick={(e) => {
+              e.stopPropagation();
+              if (instanceRef.current && typeof instanceRef.current.next === 'function') {
+                instanceRef.current.next();
+              }
+            }}
             className="text-primary bg-primary/[0.1] hover:bg-primary hover:text-white transition-colors duration-500 p-3 rounded-full"
           >
             <LuChevronRight size={24} />

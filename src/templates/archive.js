@@ -38,9 +38,9 @@ export default function TemplateArchive({
         pageName={Title || title}
         description={metadata.description || 'Browse all blog posts and updates.'}
       />
-
       {/* ✅ Main Grid Section */}
-      <section className="pt-[120px] pb-[120px]">
+      <section className="pt-[30px] pb-[120px]">
+        <div className="text-center text-2xl text-primary pb-5">Out Latest Blogs</div>
         <div className="container">
           <div className="-mx-4 flex flex-wrap justify-center">
             {Array.isArray(posts) && posts.length > 0 ? (

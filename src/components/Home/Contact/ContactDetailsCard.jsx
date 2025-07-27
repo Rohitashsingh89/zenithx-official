@@ -84,9 +84,9 @@ const ContactDetailsCard = () => {
         <div className="text-white text-xl md:text-2xl font-semibold leading-snug flex flex-col space-y-2">
           <div className="flex items-center space-x-2">
             <BiSolidQuoteRight className="rotate-180 text-primary text-2xl" />
-            <span>Dream It, Design It, Develop It, Drive It,</span>
+            <span className="text-dark dark:text-white">Dream It, Design It, Develop It, Drive It,</span>
           </div>
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2 text-dark dark:text-white">
             <span>Get in Touch to Begin.</span>
             <BiSolidQuoteRight className="text-primary text-2xl" />
           </div>

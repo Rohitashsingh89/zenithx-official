@@ -28,7 +28,7 @@ export default function ContactPage({ page }) {
         {/* Canonical (optional but good) */}
         <link rel="canonical" href="https://www.zenithx.com/contact" />
       </Head>
-      <Breadcrumb pageName="Contact Page" />
+      <Breadcrumb pageName="Contact" />
       <ContactFeatures />
 
       <Contact />

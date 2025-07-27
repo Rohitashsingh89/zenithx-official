@@ -43,7 +43,7 @@ const HeroSection = ({ heroHtmlContent = '' }) => {
             <div className="w-full lg:w-1/2 text-center lg:text-left">
               <div className="lg:block flex lg:justify-start justify-center lg:items-start items-center">
                 <Image
-                  src="/images/icons/industry-left-logo-left-side.png.webp"
+                  src="/images/hero/industry-left-logo-left-side.png.webp"
                   alt="Industry Leader flex justify-center items-center"
                   className="mb-2"
                   width={20}

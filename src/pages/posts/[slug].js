@@ -286,7 +286,7 @@ export default function Post({ post, socialImage, related }) {
                           'More Posts'
                         )} */}
                 </h4>
-                <Link href="/blogs" className="text-lg text-gray-800 dark:text-gray-200 underline text-primary">
+                <Link href="/posts/page/1" className="text-lg text-gray-800 dark:text-gray-200 underline text-primary">
                   View All
                 </Link>
               </div>

@@ -181,6 +181,7 @@
 
 // export default Footer;
 
+import ThemeToggler from 'components/Nav/ThemeToggler';
 import Image from 'next/image';
 import Link from 'next/link';
 import { IoChevronForward } from 'react-icons/io5';
@@ -268,7 +269,7 @@ const Footer = () => {
                 <ul>
                   <li>
                     <Link
-                      href="/blogs"
+                      href="/posts/page/1"
                       className="mb-4 inline-block flex items-center text-base font-medium text-body-color hover:text-primary"
                     >
                       <IoChevronForward className="mr-1 text-primary" /> <span>Blog</span>
@@ -385,6 +386,9 @@ const Footer = () => {
                     >
                       <IoChevronForward className="mr-1 text-primary" /> <span>Refund Policy</span>
                     </Link>
+                  </li>
+                  <li className="border border-gray-100 dark:border-gray-800 inline-flex">
+                    <ThemeToggler />
                   </li>
                 </ul>
               </div>
