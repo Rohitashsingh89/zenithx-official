@@ -32,6 +32,7 @@ export async function getStaticProps() {
           basePath: '/posts',
         },
       },
+      revalidate: 60,
     };
   } catch (error) {
     console.error('Error fetching paginated posts:', error);
@@ -42,6 +43,7 @@ export async function getStaticProps() {
           basePath: '/posts',
         },
       },
+      revalidate: 60,
     };
   }
 }
