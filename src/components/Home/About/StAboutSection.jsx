@@ -25,7 +25,7 @@ export default function StAboutSection() {
           id: 1,
           title: 'Our Mission',
           content:
-            'At ZenithX, our mission is to empower businesses by providing cutting-edge solutions that combine creativity, technology, and strategy.',
+            'At ZenithX or DLS, our mission is to empower businesses by providing cutting-edge solutions that combine creativity, technology, and strategy.',
         },
         {
           id: 2,

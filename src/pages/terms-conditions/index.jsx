@@ -8,7 +8,7 @@ export default function TermsAndConditionsPage() {
       <section className="relative z-10 pt-10 pb-16 md:pt-16 lg:pt-20 bg-white dark:bg-black">
         <div className="container max-w-4xl mx-auto px-4">
           <h1 className="mb-6 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[42px]">
-            Terms and <span class="text-gradient">Conditions</span>
+            Terms and <span className="text-gradient">Conditions</span>
           </h1>
 
           <p className="mb-6 text-base text-body-color dark:text-gray-300">
@@ -80,16 +80,16 @@ export default function TermsAndConditionsPage() {
           {/* Section 10 */}
           <h2 className="text-xl font-semibold text-black dark:text-white mb-2">10. Governing Law</h2>
           <p className="mb-6 text-body-color dark:text-gray-300">
-            These terms are governed by the laws of <strong>[Your Jurisdiction]</strong>.
+            These terms are governed by the laws of <strong>India</strong>.
           </p>
 
           {/* Section 11 */}
           <h2 className="text-xl font-semibold text-black dark:text-white mb-2">11. Contact Us</h2>
           <p className="mb-2 text-body-color dark:text-gray-300">For any questions, contact us at:</p>
           <ul className="mb-8 list-none text-body-color dark:text-gray-300 space-y-2">
-            {/* <li>
-              <strong>Phone:</strong> +91 (778) 325-1904
-            </li> */}
+            <li>
+              <strong>Name:</strong> Rohitash Singh
+            </li>
             <li>
               <strong>Phone:</strong> +91 89794 54475
             </li>

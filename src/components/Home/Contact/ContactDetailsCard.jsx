@@ -1,4 +1,4 @@
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaFacebook, FaLinkedin, FaInstagram, FaUser } from 'react-icons/fa';
 import { BiSolidQuoteRight } from 'react-icons/bi';
 
 const ContactDetailsCard = () => {
@@ -23,6 +23,13 @@ const ContactDetailsCard = () => {
 
       {/* Contact Info Section */}
       <div className="max-w-2xl mx-auto space-y-6 px-0">
+        <div className="flex items-start gap-4">
+          <FaUser className="text-primary text-2xl mt-1" />
+          <div>
+            <p className="font-semibold text-dark dark:text-white">Funder Name</p>
+            <p className="text-gray-500">Rohitash Singh</p>
+          </div>
+        </div>
         {/* Email */}
         <div className="flex items-start gap-4">
           <FaEnvelope className="text-primary text-2xl mt-1" />

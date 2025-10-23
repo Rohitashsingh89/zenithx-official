@@ -11,7 +11,7 @@ const ContactFeatures = () => {
           <div className="wow fadeInUp rounded-md bg-white dark:bg-black lg:px-5 xl:px-8" data-wow-delay=".1s">
             <div className={`wow fadeInUp w-full mx-auto text-center`} data-wow-delay=".1s">
               <h2 className="mb-4 text-3xl font-bold !leading-tight text-black dark:text-white sm:text-4xl md:text-[45px]">
-                Contact Our <span class="text-gradient">Professional</span> Team
+                Contact Our <span className="text-gradient">Professional</span> Team
               </h2>
               <p className="text-base !leading-relaxed text-body-color md:text-lg max-w-4xl mx-auto">
                 Our team works hard to create the best web development solutions in the industry. Our goal is to help

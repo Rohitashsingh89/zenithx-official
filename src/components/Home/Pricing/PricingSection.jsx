@@ -4,64 +4,67 @@ import OfferList from './OfferList';
 import SectionTitle from 'components/common/SectionTitle';
 import Modal from './Modal';
 
-function cleanFeatureText(text) {
-  return text
-    .replace(/^no\s+/i, '')
-    .replace(/^not\s+/i, '')
-    .replace(/^without\s+/i, '')
-    .replace(/^false\s+/i, '')
-    .trim();
-}
+// function cleanFeatureText(text) {
+//   return text
+//     .replace(/^no\s+/i, '')
+//     .replace(/^not\s+/i, '')
+//     .replace(/^without\s+/i, '')
+//     .replace(/^false\s+/i, '')
+//     .trim();
+// }
 
 function extractPricingPlansFromHtml(htmlString) {
   const blocks = htmlString.split('<hr');
   const plans = [];
+
+  const moneyPair = (label, text) => {
+    const re = new RegExp(`${label}:\\s*₹?\\s*([\\d,]+)\\s*\\|\\s*₹?\\s*([\\d,]+)`, 'i'); // supports commas
+    const m = text.match(re);
+    if (!m) return { current: null, old: null };
+    const toInt = (s) => parseInt(String(s).replace(/,/g, ''), 10);
+    return { current: toInt(m[1]), old: toInt(m[2]) };
+  }; // [web:29]
 
   blocks.forEach((blockHtml) => {
     const temp = document.createElement('div');
     temp.innerHTML = blockHtml;
 
     const strong = temp.querySelector('strong');
-    const pTags = temp.querySelectorAll('p');
-    const ul = temp.querySelector('ul');
-
     if (!strong) return;
 
+    const p = temp.querySelector('p');
+    const text = temp.innerText || '';
     const title = strong.textContent.trim();
-    const text = temp.innerText;
 
-    const monthlyMatch = text.match(/Monthly:\s*\$?(\d+)\s*\|\s*\$?(\d+)/i);
-    const yearlyMatch = text.match(/Yearly:\s*\$?(\d+)\s*\|\s*\$?(\d+)/i);
+    const monthly = moneyPair('Monthly', text);
+    const yearly = moneyPair('Yearly', text); // [web:29]
 
-    const subtitleMatch = text.match(/Yearly:\s*\$\d+\s*\|\s*\$\d+\s*(.+)$/im);
+    let description = '';
+    if (p) {
+      const parts = p.innerHTML.split('<br>').map((s) => s.replace(/<[^>]+>/g, '').trim());
+      description = parts.reverse().find((t) => t && !/^yearly:/i.test(t) && !/^monthly:/i.test(t)) || '';
+    } // [web:29]
 
-    const plan = {
+    const ul = temp.querySelector('ul');
+    const neg = /no|not|without|false/i;
+    const cleanFeatureText = (t) => t.replace(/^no\s+|^not\s+|^without\s+|^false\s+/i, '').trim(); // [web:29]
+
+    const features = ul
+      ? Array.from(ul.querySelectorAll('li')).map((li) => {
+          const t = li.textContent.trim();
+          return { featureText: cleanFeatureText(t), isActive: !neg.test(t) };
+        })
+      : [];
+
+    plans.push({
       planName: title,
-      priceMonthly: monthlyMatch ? monthlyMatch[1] : '',
-      priceMonthlyOld: monthlyMatch ? monthlyMatch[2] : '',
-      priceYearly: yearlyMatch ? yearlyMatch[1] : '',
-      priceYearlyOld: yearlyMatch ? yearlyMatch[2] : '',
-      description: subtitleMatch ? subtitleMatch[1].trim() : '',
-      features: [],
-    };
-
-    if (ul) {
-      plan.features = Array.from(ul.querySelectorAll('li')).map((li) => {
-        const text = li.textContent.trim();
-        const isActive = !/no|not|without|false/i.test(text);
-        return { featureText: cleanFeatureText(text), isActive };
-      });
-    } else {
-      plan.features = Array.from(pTags)
-        .slice(1)
-        .map((p) => {
-          const text = p.textContent.trim();
-          const isActive = !/no|not|without|false/i.test(text);
-          return { featureText: cleanFeatureText(text), isActive };
-        });
-    }
-
-    plans.push(plan);
+      monthly, // { current, old }
+      yearly, // { current, old }
+      currency: 'INR',
+      locale: 'en-IN',
+      description,
+      features,
+    });
   });
 
   return plans;
@@ -131,11 +134,7 @@ export default function PricingSection({ htmlContent = '', showTitle = true }) {
               key={index}
               isPopular={index === 1}
               packageName={plan.planName}
-              price={
-                isMonthly
-                  ? `${plan.priceMonthly || ''} | ${plan.priceMonthlyOld || ''}`
-                  : `${plan.priceYearly || ''} | ${plan.priceYearlyOld || ''}`
-              }
+              price={isMonthly ? plan.monthly : plan.yearly} // { current, old }
               duration={isMonthly ? 'mo' : 'yr'}
               subtitle={plan.description}
               showMore={showMore}
@@ -149,6 +148,7 @@ export default function PricingSection({ htmlContent = '', showTitle = true }) {
             </PricingBox>
           ))}
         </div>
+
         {/* <div>**Our currency is USD (United States Dollar)</div> */}
       </div>
       <Modal show={showModal} onClose={() => setShowModal(false)} planName={modalPlanName} />

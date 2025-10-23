@@ -45,12 +45,7 @@
   left: -50%;
   width: 200%;
   height: 200%;
-  background: linear-gradient(
-    0deg, 
-    transparent, 
-    transparent 30%, 
-    rgba(255, 141, 77, 0.5) /* thoda orange glow */
-  );
+  background: linear-gradient(0deg, transparent, transparent 30%, rgba(255, 141, 77, 0.5) /* thoda orange glow */);
   transform: rotate(-45deg);
   transition: all 0.5s ease;
   opacity: 0;
@@ -106,6 +101,6 @@
 
 @media (max-width: 450px) {
   .keen-slider-container {
-    max-width: 450px; 
+    max-width: 450px;
   }
 }

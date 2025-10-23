@@ -328,7 +328,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <Link
-                      href="/service/seo-services"
+                      href="/service/seo"
                       className="mb-4 inline-block flex items-center text-base font-medium text-body-color hover:text-primary"
                     >
                       <IoChevronForward className="mr-1 text-primary" /> <span>Seo Services</span>
@@ -405,7 +405,10 @@ const Footer = () => {
               <Link href="https://www.zenithx.in" className="font-semibold hover:underline text-primary">
                 ZenithX.in.
               </Link>{' '}
-              All Rights Reserved.
+              All Rights Reserved. Powered By{' '}
+              <Link href="https://www.zenithx.in" className="font-semibold hover:underline text-primary">
+                DLS.
+              </Link>
             </p>
           </div>
         </div>

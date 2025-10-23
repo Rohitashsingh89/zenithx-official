@@ -17,7 +17,7 @@ const FeaturedSection = () => {
                 Empower Your Online Presence{' '}
                 <div>
                   {' '}
-                  with <span class="text-gradient">Scalable Web Solutions</span>
+                  with <span className="text-gradient">Scalable Web Solutions</span>
                 </div>
               </h2>
               <p className="text-base !leading-relaxed text-body-color md:text-lg max-w-4xl mx-auto">

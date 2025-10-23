@@ -8,7 +8,7 @@ export default function RefundPolicyPage() {
       <section className="relative z-10 pt-10 pb-16 md:pt-16 lg:pt-20 bg-white dark:bg-black">
         <div className="container max-w-4xl mx-auto px-4">
           <h1 className="mb-6 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[42px]">
-            Refund <span class="text-gradient">Policy</span>
+            Refund <span className="text-gradient">Policy</span>
           </h1>
           <p className="mb-8 text-base text-body-color dark:text-gray-300">
             <strong>Effective Date:</strong> February 25, 2025
@@ -50,7 +50,7 @@ export default function RefundPolicyPage() {
               info@zenithx.in
             </a>{' '}
             with your request. We will review your request and inform you within 10 business days. If approved, refunds
-            will be processed within 15 business days.
+            will be credited within 15 business days.
           </p>
 
           <h2 className="mb-3 text-xl font-semibold text-black dark:text-white">5. Changes to This Refund Policy</h2>

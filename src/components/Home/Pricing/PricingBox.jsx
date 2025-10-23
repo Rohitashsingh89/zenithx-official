@@ -1,5 +1,13 @@
 import React from 'react';
 
+const formatINR = (n) =>
+  new Intl.NumberFormat('en-IN', {
+    style: 'currency',
+    currency: 'INR',
+    maximumFractionDigits: 0,
+    currencyDisplay: 'symbol',
+  }).format(n);
+
 const PricingBox = ({
   price,
   duration,
@@ -14,7 +22,10 @@ const PricingBox = ({
 }) => {
   const childrenArray = React.Children.toArray(children);
   const visibleFeatures = showMore ? childrenArray : childrenArray.slice(0, 7);
-  const [mainPrice = '', oldPrice = ''] = (price || '').split('|').map((p) => p.trim());
+
+  const main = price?.current != null ? formatINR(price.current) : '';
+  const old = price?.old != null ? formatINR(price.old) : ''; // [web:13]
+
   return (
     <div className="w-full">
       <div
@@ -29,12 +40,11 @@ const PricingBox = ({
         <div className="flex items-center justify-between">
           <h3 className="price mb-2 text-3xl font-bold text-black dark:text-white">
             <div>
-              $<span className="text-primary">{mainPrice}</span>
+              <span className="text-primary">{main}</span>
               <span className="time text-body-color">/{duration}</span>
             </div>
-            {<div className="text-lg text-gray-400 line-through">${oldPrice}</div>}
+            {old && <div className="text-lg text-gray-400 line-through">{old}</div>}
           </h3>
-
           <h4 className="mb-2 text-xl font-bold text-dark dark:text-white">{packageName}</h4>
         </div>
         <p className="mb-7 text-base text-body-color">{subtitle}</p>

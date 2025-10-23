@@ -9,7 +9,7 @@ export default function PrivacyPolicyPage() {
       <section className="relative z-10 pt-10 pb-16 md:pt-16 lg:pt-20 bg-white dark:bg-black">
         <div className="container max-w-4xl mx-auto px-4">
           <h2 className="mb-6 text-3xl font-bold leading-tight text-black dark:text-white sm:text-4xl md:text-[42px]">
-            Privacy <span class="text-gradient">Policy</span>
+            Privacy <span className="text-gradient">Policy</span>
           </h2>
 
           {/* Effective Dates */}
@@ -81,17 +81,17 @@ export default function PrivacyPolicyPage() {
           </div>
 
           {/* Section 6 */}
-          <div className="mb-8">
+          {/* <div className="mb-8">
             <h3 className="text-xl font-semibold text-black dark:text-white mb-2">6. Cookies & Tracking</h3>
             <p className="text-body-color dark:text-gray-300">
               We use cookies to improve user experience and analyze traffic. You can control cookies through your
               browser settings.
             </p>
-          </div>
+          </div> */}
 
           {/* Section 7 */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">7. Third-Party Links</h3>
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">6. Third-Party Links</h3>
             <p className="text-body-color dark:text-gray-300">
               Our site may link to third-party websites. We are not responsible for their privacy practices.
             </p>
@@ -99,7 +99,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Section 8 */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">8. Changes to This Policy</h3>
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">7. Changes to This Policy</h3>
             <p className="text-body-color dark:text-gray-300">
               We may update this policy. Any changes will be posted with an updated effective date.
             </p>
@@ -107,7 +107,7 @@ export default function PrivacyPolicyPage() {
 
           {/* Contact Section */}
           <div className="mb-8">
-            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">9. Contact Us</h3>
+            <h3 className="text-xl font-semibold text-black dark:text-white mb-2">8. Contact Us</h3>
             <ul className="text-body-color dark:text-gray-300">
               <li>
                 <strong>Phone (IN):</strong> +91 8979454475
