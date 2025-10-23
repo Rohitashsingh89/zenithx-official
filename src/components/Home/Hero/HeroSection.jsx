@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { FaCode, FaRobot, FaUsers, FaSearch, FaDollarSign } from 'react-icons/fa';
+import { FaCode, FaRobot, FaUsers, FaSearch, FaRupeeSign } from 'react-icons/fa';
 import { slugify } from 'lib/util';
 
 const HeroSection = ({ heroHtmlContent = '' }) => {
@@ -27,7 +27,7 @@ const HeroSection = ({ heroHtmlContent = '' }) => {
 
   const features = [
     { text: 'Hire AI Developers', icon: <FaRobot /> },
-    { text: 'Dev Team @ $2900', icon: <FaDollarSign /> },
+    { text: '@Dev Team', icon: <FaRupeeSign /> },
     { text: 'On-Demand Devs', icon: <FaUsers /> },
     { text: 'Staff Augmentation', icon: <FaCode /> },
     { text: 'Technical SEO Services', icon: <FaSearch /> },
